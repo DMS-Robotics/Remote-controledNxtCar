@@ -1,0 +1,51 @@
+#pragma config(Sensor, S1,     leftTURN,       sensorTouch)
+#pragma config(Sensor, S2,     reverseDRIVE,   sensorTouch)
+#pragma config(Sensor, S3,     fowardDRIVE,    sensorTouch)
+#pragma config(Sensor, S4,     rightTURN,      sensorTouch)
+#pragma config(Motor,  motorA,          rearSTEERING,  tmotorNXT, PIDControl, encoder)
+#pragma config(Motor,  motorB,          STEERING,      tmotorNXT, PIDControl, encoder)
+#pragma config(Motor,  motorC,          DRIVE,         tmotorNXT, PIDControl, encoder)
+
+task main()
+{
+	
+int ipowermotorspeed=100;
+int imotorsteeringdegrees=10;
+int isteeringmotorspeed=30;
+	while (1==1){
+
+  if(SensorValue[leftTURN] ==  1){
+  	nmotorencoder=0
+		nMotorEncoderTarget[STEERING] = imotorsteeringdegrees;	
+  motor[STEERING] = isteeringmotorspeed ; 
+	while(motor[STEERING]==runStateRunning){}
+		motor[motorC] = 0;
+		}
+		
+  if(SensorValue[rightTURN] ==  1){
+  	nmotorencoder=0
+		nMotorEncoderTarget[STEERING] = imotorsteeringdegrees;	
+  motor[STEERING] = isteeringmotorspeed; 
+	while(motor[STEERING]==runStateRunning){}
+		motor[STEERING] = 0;
+		}
+	
+	if(SensorValue[reverseDrive]==1){
+		for( ; ; ){
+	motor[DRIVE]=-imotorspeed;
+	  }
+	}else(
+		motor[DRIVE]=0;
+}
+	
+		while(SensorValue[fowardDRIVE]==1){
+		for( ; ; ){
+	motor[DRIVE]=-motorspeed;
+	  }
+	}else(
+		motor[DRIVE]=0;
+}
+	
+	 
+}
+}
