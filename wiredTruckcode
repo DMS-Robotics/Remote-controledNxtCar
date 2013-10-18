@@ -9,13 +9,13 @@
 task main()
 {
 	
-int ipowermotorspeed=100;
+int imotorspeed=100;
 int imotorsteeringdegrees=10;
 int isteeringmotorspeed=30;
 	while (1==1){
 
   if(SensorValue[leftTURN] ==  1){
-  	nmotorencoder=0
+  	nMotorEncoder[STEERING]=0;
 		nMotorEncoderTarget[STEERING] = imotorsteeringdegrees;	
   motor[STEERING] = isteeringmotorspeed ; 
 	while(motor[STEERING]==runStateRunning){}
@@ -23,26 +23,26 @@ int isteeringmotorspeed=30;
 		}
 		
   if(SensorValue[rightTURN] ==  1){
-  	nmotorencoder=0
+  	nMotorEncoder[STEERING]=0;
 		nMotorEncoderTarget[STEERING] = imotorsteeringdegrees;	
   motor[STEERING] = isteeringmotorspeed; 
 	while(motor[STEERING]==runStateRunning){}
 		motor[STEERING] = 0;
 		}
 	
-	if(SensorValue[reverseDrive]==1){
+	if(SensorValue[reverseDRIVE]==1){
 		for( ; ; ){
 	motor[DRIVE]=-imotorspeed;
 	  }
-	}else(
+	}else{
 		motor[DRIVE]=0;
 }
 	
-		while(SensorValue[fowardDRIVE]==1){
+		if(SensorValue[fowardDRIVE]==1){
 		for( ; ; ){
-	motor[DRIVE]=-motorspeed;
+	motor[DRIVE]=-imotorspeed;
 	  }
-	}else(
+	}else{
 		motor[DRIVE]=0;
 }
 	
