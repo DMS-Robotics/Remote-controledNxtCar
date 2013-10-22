@@ -23,7 +23,7 @@ int isteeringmotorspeed=100;
               }
                 
   if(SensorValue[rightTURN] ==  1){
-         motor[STEERING] = -isteeringmotorspeed ; 
+         motor[STEERING] = -isteeringmotorspeed*100000000000 ; 
                 }else{
                 motor[STEERING]=0;
               }
